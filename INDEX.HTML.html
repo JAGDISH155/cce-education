@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="gu">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CCE Education Gujarat</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,"Noto Sans Gujarati",sans-serif;background:#f5f7fb;color:#172033}
+header{background:linear-gradient(135deg,#173b8f,#2563eb);color:#fff;padding:22px 16px}
+.wrap{max-width:1000px;margin:auto}
+.brand{display:flex;align-items:center;gap:12px}
+.logo{width:52px;height:52px;border-radius:14px;background:#fff;color:#173b8f;display:grid;place-items:center;font-weight:800;font-size:20px}
+h1{margin:0;font-size:26px}
+.tag{margin:5px 0 0;opacity:.9}
+.hero{padding:36px 16px 20px;text-align:center}
+.hero h2{font-size:30px;margin:0 0 10px}
+.hero p{font-size:17px;color:#5d6678}
+.btn{display:inline-block;background:#ff7a00;color:white;text-decoration:none;border:0;border-radius:12px;padding:14px 24px;font-size:17px;font-weight:700;cursor:pointer;box-shadow:0 6px 18px #ff7a0033}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;padding:18px 16px 35px}
+.card{background:#fff;border-radius:16px;padding:22px;box-shadow:0 5px 20px #17203312;border:1px solid #e8ebf2}
+.icon{font-size:30px}.card h3{margin:10px 0 6px}.card p{margin:0;color:#697386;line-height:1.5}
+.testbox{max-width:700px;margin:10px auto 35px;padding:0 16px}
+.panel{background:#fff;border-radius:18px;padding:24px;box-shadow:0 5px 20px #17203312;display:none}
+.panel h2{margin-top:0}
+label{font-weight:700;display:block;margin-bottom:7px}
+input{width:100%;padding:13px;border:1px solid #ccd3df;border-radius:10px;font-size:16px;margin-bottom:15px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:18px 0}
+.stat{background:#f1f5ff;border-radius:12px;padding:14px;text-align:center}
+.stat b{display:block;font-size:20px;color:#173b8f}
+footer{text-align:center;padding:25px 16px;background:#111827;color:#cbd5e1}
+@media(max-width:700px){.grid{grid-template-columns:1fr}.stats{grid-template-columns:1fr}.hero h2{font-size:25px}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap brand">
+    <div class="logo">CCE</div>
+    <div>
+      <h1>CCE Education Gujarat</h1>
+      <div class="tag">CCE પરીક્ષાની Online તૈયારી</div>
+    </div>
+  </div>
+</header>
+
+<section class="hero wrap">
+  <h2>🎓 CCE Mock Test Platform</h2>
+  <p>Mock Test • MCQ Practice • Result • Rank</p>
+  <button class="btn" onclick="showTest()">👉 START MOCK TEST</button>
+</section>
+
+<section class="grid wrap">
+  <div class="card"><div class="icon">📝</div><h3>CCE Mock Test</h3><p>150 માર્કની પરીક્ષા માટે Online Mock Test.</p></div>
+  <div class="card"><div class="icon">📚</div><h3>Subject-wise Test</h3><p>વિષય પ્રમાણે MCQ Practice માટે અલગ ટેસ્ટ.</p></div>
+  <div class="card"><div class="icon">📊</div><h3>Result & Rank</h3><p>Test પછી Score અને Rank જોવા માટેની વ્યવસ્થા.</p></div>
+  <div class="card"><div class="icon">🔥</div><h3>Daily MCQ</h3><p>દરરોજ નવી Practice માટે MCQ ઉમેરવાની જગ્યા.</p></div>
+  <div class="card"><div class="icon">🏆</div><h3>Leaderboard</h3><p>વિદ્યાર્થીઓના પરિણામ માટે Leaderboard.</p></div>
+  <div class="card"><div class="icon">📢</div><h3>Updates</h3><p>CCE સંબંધિત મહત્વપૂર્ણ માહિતી માટે વિભાગ.</p></div>
+</section>
+
+<div class="testbox">
+  <div id="testPanel" class="panel">
+    <h2>📝 CCE Mock Test – 01</h2>
+    <p>હાલ માટે આ Test Start Page છે. આગળના તબક્કામાં અહીં 150 પ્રશ્નોની સંપૂર્ણ પરીક્ષા જોડવામાં આવશે.</p>
+    <div class="stats">
+      <div class="stat"><b>150</b>કુલ પ્રશ્નો</div>
+      <div class="stat"><b>150</b>કુલ માર્ક</div>
+      <div class="stat"><b>120</b>મિનિટ</div>
+    </div>
+    <label for="student">વિદ્યાર્થીનું નામ</label>
+    <input id="student" placeholder="તમારું નામ લખો">
+    <button class="btn" onclick="start()">TEST START કરો ▶️</button>
+    <p id="message"></p>
+  </div>
+</div>
+
+<footer>© 2026 CCE Education Gujarat • Online Exam Preparation</footer>
+
+<script>
+function showTest(){
+  document.getElementById('testPanel').style.display='block';
+  document.getElementById('testPanel').scrollIntoView({behavior:'smooth'});
+}
+function start(){
+  const n=document.getElementById('student').value.trim();
+  document.getElementById('message').textContent=n ? 'Welcome, '+n+'! Mock Test module અહીં જોડાશે.' : 'કૃપા કરીને પહેલા તમારું નામ લખો.';
+}
+</script>
+</body>
+</html>

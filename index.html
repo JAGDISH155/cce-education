@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="gu">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="JB Education - CCE અને વિવિધ પરીક્ષાઓ માટે Online Mock Test Platform">
+<title>JB EDUCATION | CCE Mock Test Platform</title>
+
+<style>
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  font-family:Arial,"Noto Sans Gujarati","Nirmala UI",sans-serif;
+  background:#f5f7fb;
+  color:#172033;
+}
+a{text-decoration:none}
+.container{max-width:1150px;margin:auto;padding:0 18px}
+
+/* TOP BAR */
+.topbar{
+  background:#071b43;color:#dbeafe;font-size:14px;padding:8px 0;
+}
+.topbar .container{display:flex;justify-content:space-between;gap:15px;align-items:center}
+.top-links{display:flex;gap:18px}
+
+/* HEADER */
+header{
+  position:sticky;top:0;z-index:1000;
+  background:rgba(7,27,67,.96);
+  backdrop-filter:blur(12px);
+  color:#fff;
+  box-shadow:0 5px 25px rgba(0,0,0,.15);
+}
+.nav{
+  min-height:76px;display:flex;align-items:center;justify-content:space-between;gap:20px;
+}
+.brand{display:flex;align-items:center;gap:12px;color:#fff}
+.logo{
+  width:54px;height:54px;border-radius:16px;
+  display:grid;place-items:center;
+  background:linear-gradient(135deg,#38bdf8,#2563eb);
+  font-weight:900;font-size:18px;
+  box-shadow:0 8px 20px rgba(37,99,235,.35);
+}
+.brand h1{font-size:21px;margin:0}
+.brand p{font-size:12px;margin:3px 0 0;color:#bfdbfe}
+nav{display:flex;align-items:center;gap:22px}
+nav a{color:#e5e7eb;font-size:14px;font-weight:700}
+nav a:hover{color:#38bdf8}
+.login{
+  background:linear-gradient(135deg,#2563eb,#38bdf8);
+  color:white!important;padding:11px 17px;border-radius:10px;
+}
+.menu{display:none;color:white;font-size:28px;cursor:pointer}
+
+/* HERO */
+.hero{
+  position:relative;overflow:hidden;
+  background:
+    radial-gradient(circle at 80% 20%,rgba(99,102,241,.35),transparent 30%),
+    radial-gradient(circle at 10% 80%,rgba(14,165,233,.25),transparent 28%),
+    linear-gradient(135deg,#071b43,#102b75 55%,#1e40af);
+  color:white;
+}
+.hero:after{
+  content:"";position:absolute;width:320px;height:320px;border-radius:50%;
+  border:1px solid rgba(255,255,255,.12);right:-100px;top:-120px;
+  animation:spin 18s linear infinite;
+}
+.hero-inner{
+  min-height:500px;display:grid;grid-template-columns:1fr 1fr;
+  align-items:center;gap:30px;position:relative;z-index:2;
+}
+.badge{
+  display:inline-block;background:rgba(255,255,255,.12);
+  border:1px solid rgba(255,255,255,.2);
+  padding:9px 14px;border-radius:30px;font-weight:700;
+}
+.hero h2{font-size:52px;line-height:1.08;margin:18px 0 12px}
+.hero h2 span{color:#38bdf8}
+.hero p{font-size:18px;line-height:1.7;color:#dbeafe;max-width:600px}
+.hero-buttons{display:flex;gap:12px;flex-wrap:wrap;margin-top:25px}
+.btn{
+  display:inline-block;padding:14px 22px;border-radius:12px;
+  font-weight:800;transition:.25s;
+}
+.btn-primary{background:#ff7a00;color:#fff;box-shadow:0 10px 25px rgba(255,122,0,.25)}
+.btn-secondary{background:rgba(255,255,255,.1);color:#fff;border:1px solid rgba(255,255,255,.3)}
+.btn:hover{transform:translateY(-3px)}
+.hero-points{display:flex;gap:20px;flex-wrap:wrap;margin-top:22px;color:#dbeafe;font-size:14px}
+.hero-visual{display:flex;justify-content:center;align-items:center;position:relative}
+.device{
+  width:min(520px,100%);background:#fff;border:8px solid #0f172a;
+  border-radius:25px;box-shadow:0 25px 70px rgba(0,0,0,.4);
+  transform:rotate(2deg);animation:float 4s ease-in-out infinite;
+  overflow:hidden;
+}
+.device-top{height:30px;background:#e5e7eb;display:flex;align-items:center;padding:0 10px;gap:5px}
+.dot{width:8px;height:8px;border-radius:50%;background:#94a3b8}
+.screen{padding:25px;background:linear-gradient(180deg,#eff6ff,#fff)}
+.screen-title{font-size:21px;font-weight:900;color:#173b8f;margin-bottom:18px}
+.q{background:#fff;border:1px solid #dbe3f0;border-radius:12px;padding:13px;margin:9px 0;color:#334155}
+.q.active{border-color:#2563eb;background:#eff6ff}
+.timer{float:right;background:#fee2e2;color:#b91c1c;padding:5px 8px;border-radius:7px;font-size:12px}
+.next{display:block;text-align:center;background:#2563eb;color:#fff;border-radius:10px;padding:11px;margin-top:15px;font-weight:800}
+
+/* QUICK FEATURES */
+.quick{
+  margin-top:-35px;position:relative;z-index:10;
+}
+.quick-grid{
+  display:grid;grid-template-columns:repeat(6,1fr);
+  background:#fff;border-radius:20px;box-shadow:0 12px 35px rgba(15,23,42,.12);
+  overflow:hidden;
+}
+.quick-item{text-align:center;padding:23px 10px;border-right:1px solid #edf0f5}
+.quick-item:last-child{border-right:0}
+.quick-item .icon{font-size:30px}
+.quick-item h4{margin:8px 0 3px;font-size:15px}
+.quick-item p{margin:0;color:#64748b;font-size:12px}
+
+/* SECTIONS */
+.section{padding:65px 0}
+.section-title{text-align:center;margin-bottom:35px}
+.section-title .mini{color:#2563eb;font-weight:800}
+.section-title h2{font-size:32px;margin:8px 0;color:#102a68}
+.section-title p{color:#64748b;margin:0}
+
+/* EXAMS */
+.exam-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.exam-card{
+  background:#fff;border:1px solid #e5eaf4;border-radius:20px;padding:25px;
+  box-shadow:0 8px 25px rgba(23,59,143,.08);
+  position:relative;overflow:hidden;transition:.3s;color:#172033;
+}
+.exam-card:hover{transform:translateY(-8px);box-shadow:0 18px 40px rgba(23,59,143,.16)}
+.exam-card:before{content:"";position:absolute;left:0;top:0;width:100%;height:5px;background:linear-gradient(90deg,#173b8f,#2563eb,#7c3aed)}
+.exam-icon{font-size:44px}
+.exam-card h3{margin:10px 0 7px;color:#173b8f}
+.exam-card p{color:#64748b;line-height:1.5;min-height:45px}
+.meta{display:flex;gap:12px;flex-wrap:wrap;color:#475569;font-size:13px;margin:14px 0}
+.start{
+  display:inline-block;background:linear-gradient(135deg,#173b8f,#2563eb);
+  color:#fff;padding:11px 17px;border-radius:10px;font-weight:800;
+}
+.coming{background:#16a34a}
+
+/* SUBJECTS */
+.subject-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:15px}
+.subject{
+  background:#fff;border:1px solid #e5eaf4;border-radius:16px;padding:20px 10px;
+  text-align:center;transition:.25s;
+}
+.subject:hover{transform:translateY(-5px);border-color:#93c5fd}
+.subject div{font-size:35px}
+.subject h4{margin:9px 0 4px}
+.subject p{margin:0;color:#64748b;font-size:12px}
+
+/* STATS */
+.stats{
+  background:linear-gradient(135deg,#071b43,#173b8f);
+  color:#fff;border-radius:22px;padding:30px;
+  display:grid;grid-template-columns:repeat(4,1fr);gap:20px;
+  box-shadow:0 15px 35px rgba(7,27,67,.2);
+}
+.stat{text-align:center}
+.stat .num{font-size:34px;font-weight:900;color:#38bdf8}
+.stat p{margin:5px 0 0;color:#dbeafe}
+
+/* CONTENT */
+.content-grid{display:grid;grid-template-columns:1.1fr 1fr 1fr;gap:20px}
+.info-card{background:#fff;border:1px solid #e5eaf4;border-radius:20px;padding:22px;box-shadow:0 8px 25px rgba(23,59,143,.07)}
+.info-card h3{margin-top:0;color:#173b8f}
+.video-box{
+  aspect-ratio:16/9;border-radius:15px;
+  background:linear-gradient(135deg,#0f172a,#1e40af);
+  display:grid;place-items:center;color:white;font-size:55px;
+  position:relative;overflow:hidden;
+}
+.video-box:after{content:"";position:absolute;width:180px;height:180px;border:1px solid rgba(255,255,255,.2);border-radius:50%;animation:pulse 2.5s infinite}
+.play{z-index:2}
+.info-list{list-style:none;padding:0;margin:0}
+.info-list li{padding:9px 0;border-bottom:1px solid #eef2f7}
+.info-list li:last-child{border-bottom:0}
+.update{display:flex;justify-content:space-between;gap:10px;padding:12px 0;border-bottom:1px solid #eef2f7}
+.update:last-child{border-bottom:0}
+.update b{color:#172033}
+.update span{font-size:12px;color:#64748b}
+
+/* CTA */
+.cta{
+  background:linear-gradient(135deg,#7c3aed,#2563eb);
+  color:#fff;border-radius:24px;padding:40px;text-align:center;
+  box-shadow:0 15px 35px rgba(37,99,235,.2);
+}
+.cta h2{margin:0 0 10px;font-size:30px}
+.cta p{color:#e0e7ff}
+
+/* FOOTER */
+footer{background:#07152f;color:#cbd5e1;padding:45px 0 20px}
+.footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:30px}
+footer h3,footer h4{color:#fff}
+footer a{color:#cbd5e1;display:block;margin:9px 0;font-size:14px}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.1);margin-top:30px;padding-top:18px;display:flex;justify-content:space-between;gap:15px;font-size:13px}
+
+/* ANIMATIONS */
+@keyframes float{0%,100%{transform:rotate(2deg) translateY(0)}50%{transform:rotate(2deg) translateY(-12px)}}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes pulse{0%{transform:scale(.8);opacity:.7}100%{transform:scale(1.5);opacity:0}}
+
+@media(max-width:900px){
+  nav{display:none;position:absolute;top:76px;left:0;right:0;background:#071b43;padding:18px;flex-direction:column;align-items:stretch}
+  nav.open{display:flex}
+  nav a{padding:10px}
+  .menu{display:block}
+  .hero-inner{grid-template-columns:1fr;padding:55px 0}
+  .hero h2{font-size:42px}
+  .quick-grid{grid-template-columns:repeat(3,1fr)}
+  .quick-item:nth-child(3){border-right:0}
+  .exam-grid{grid-template-columns:repeat(2,1fr)}
+  .subject-grid{grid-template-columns:repeat(3,1fr)}
+  .content-grid{grid-template-columns:1fr 1fr}
+  .content-grid .info-card:first-child{grid-column:1/-1}
+  .footer-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:600px){
+  .topbar{display:none}
+  .brand h1{font-size:18px}
+  .hero h2{font-size:34px}
+  .hero p{font-size:16px}
+  .quick-grid{grid-template-columns:repeat(2,1fr)}
+  .quick-item{border-right:1px solid #edf0f5!important}
+  .exam-grid,.content-grid{grid-template-columns:1fr}
+  .subject-grid{grid-template-columns:repeat(2,1fr)}
+  .stats{grid-template-columns:repeat(2,1fr)}
+  .footer-grid{grid-template-columns:1fr}
+  .footer-bottom{flex-direction:column}
+}
+</style>
+</head>
+
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <div class="container">
+    <div>🔥 CCE 2026 માટે શ્રેષ્ઠ તૈયારી કરો — આજે જ Mock Test આપો!</div>
+    <div class="top-links">
+      <span>❓ Help</span>
+      <span>🟢 WhatsApp</span>
+    </div>
+  </div>
+</div>
+
+<!-- HEADER -->
+<header>
+  <div class="container nav">
+    <a href="index.html" class="brand">
+      <div class="logo">CCE</div>
+      <div>
+        <h1>JB EDUCATION</h1>
+        <p>CCE Mock Test Platform</p>
+      </div>
+    </a>
+
+    <div class="menu" onclick="toggleMenu()">☰</div>
+
+    <nav id="mainNav">
+      <a href="#home">Home</a>
+      <a href="#tests">Mock Tests</a>
+      <a href="#subjects">Subjects</a>
+      <a href="results.html">Results</a><a href="leaderboard.html">Leaderboard</a>
+      <a href="#updates">Updates</a>
+      <a href="#about">About Us</a>
+      <a href="#contact">Contact</a>
+      <a href="login.html" class="login">👤 Login / Register</a>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="container hero-inner">
+
+    <div>
+      <span class="badge">🏆 CCE પરીક્ષાની શ્રેષ્ઠ તૈયારી માટે એક જ પ્લેટફોર્મ</span>
+
+      <h2>CCE MOCK TEST<br><span>PLATFORM 🎯</span></h2>
+
+      <p>
+        CCE પરીક્ષાની સંપૂર્ણ તૈયારી માટે Online Mock Test આપો,
+        તમારો Score જુઓ, Result મેળવો અને તમારી તૈયારીનું Analysis કરો.
+      </p>
+
+      <div class="hero-buttons">
+        <a class="btn btn-primary" href="mock-test-1.html">🚀 START MOCK TEST-1</a>
+        <a class="btn btn-secondary" href="mock-test-2.html">⚡ START MOCK TEST-2</a>
+      </div>
+
+      <div class="hero-points">
+        <span>✅ Free Practice</span>
+        <span>⚡ Instant Result</span>
+        <span>🏆 Rank System</span>
+      </div>
+    </div>
+
+    <!-- Animated mock test visual -->
+    <div class="hero-visual">
+      <div class="device">
+        <div class="device-top">
+          <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+        </div>
+        <div class="screen">
+          <div class="screen-title">
+            CCE MOCK TEST
+            <span class="timer">⏱ 01:15:30</span>
+          </div>
+          <div class="q active">પ્રશ્ન 12 of 150</div>
+          <div class="q">◯ ભારતનું બંધારણ</div>
+          <div class="q">◯ ભારતીય ઇતિહાસ</div>
+          <div class="q">◯ ભારતનું ભૂગોળ</div>
+          <div class="q">◯ સામાન્ય વિજ્ઞાન</div>
+          <span class="next">Next Question ➜</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- QUICK FEATURES -->
+<section class="quick">
+  <div class="container">
+    <div class="quick-grid">
+      <div class="quick-item"><div class="icon">📝</div><h4>150 માર્ક ટેસ્ટ</h4><p>પૂર્ણ Revision આધારિત</p></div>
+      <div class="quick-item"><div class="icon">📚</div><h4>વિષયવાર ટેસ્ટ</h4><p>દરેક વિષયની MCQ Practice</p></div>
+      <div class="quick-item"><div class="icon">📊</div><h4>તાત્કાલિક Result</h4><p>Score અને Analysis</p></div>
+      <div class="quick-item"><div class="icon">🏆</div><h4>All India Rank</h4><p>Leaderboardમાં સ્થાન મેળવો</p></div>
+      <div class="quick-item"><div class="icon">🔥</div><h4>Daily MCQ</h4><p>દરરોજ નવી Practice</p></div>
+      <div class="quick-item"><div class="icon">🔔</div><h4>Latest Updates</h4><p>મહત્વપૂર્ણ સૂચનાઓ</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- MOCK TESTS -->
+<section class="section" id="tests">
+  <div class="container">
+    <div class="section-title">
+      <div class="mini">📚 AVAILABLE TESTS</div>
+      <h2>વિવિધ પરીક્ષાની Mock Test</h2>
+      <p>પરીક્ષા પસંદ કરો અને સીધી તમારી Mock Test શરૂ કરો</p>
+    </div>
+
+    <div class="exam-grid">
+
+      <!-- માત્ર આ href અને નામ બદલીને નવા Test ઉમેરવા -->
+      <a href="mock-test-1.html" class="exam-card">
+        <div class="exam-icon">🎓</div>
+        <h3>CCE Mock Test – 01</h3>
+        <p>CCE પરીક્ષાની Online તૈયારી માટે Mock Test.</p>
+        <div class="meta"><span>📝 150 પ્રશ્નો</span><span>⏱ 120 મિનિટ</span></div>
+        <span class="start">TEST-1 START કરો ➜</span>
+      </a>
+
+      <a href="mock-test-2.html" class="exam-card">
+        <div class="exam-icon">📘</div>
+        <h3>CCE Mock Test – 02</h3>
+        <p>CCE પરીક્ષાની બીજી Practice Test.</p>
+        <div class="meta"><span>📝 150 પ્રશ્નો</span><span>⏱ 120 મિનિટ</span></div>
+        <span class="start">TEST-2 START કરો ➜</span>
+      </a>
+
+      <a href="mock-test-3.html" class="exam-card">
+        <div class="exam-icon">🧑‍🏫</div>
+        <h3>TAT Mock Test</h3>
+        <p>TAT પરીક્ષાની Online તૈયારી માટે Mock Test.</p>
+        <div class="meta"><span>📝 MCQ Test</span><span>⏱ Online</span></div>
+        <span class="start">TEST START કરો ➜</span>
+      </a>
+
+      <a href="mock-test-4.html" class="exam-card">
+        <div class="exam-icon">🏫</div>
+        <h3>HTAT Mock Test</h3>
+        <p>HTAT પરીક્ષાની તૈયારી માટે Practice Test.</p>
+        <div class="meta"><span>📝 MCQ Test</span><span>⏱ Online</span></div>
+        <span class="start">TEST START કરો ➜</span>
+      </a>
+
+      <a href="mock-test-5.html" class="exam-card">
+        <div class="exam-icon">🏆</div>
+        <h3>GPSC Mock Test</h3>
+        <p>GPSC પરીક્ષા માટે Online Practice.</p>
+        <div class="meta"><span>📝 MCQ Test</span><span>⏱ Online</span></div>
+        <span class="start">TEST START કરો ➜</span>
+      </a>
+
+      <a href="mock-test-6.html" class="exam-card">
+        <div class="exam-icon">👮</div>
+        <h3>Police Exam Mock Test</h3>
+        <p>Police ભરતી પરીક્ષાની Online તૈયારી.</p>
+        <div class="meta"><span>📝 MCQ Test</span><span>⏱ Online</span></div>
+        <span class="start">TEST START કરો ➜</span>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="section" id="results" style="padding-top:0">
+  <div class="container">
+    <div class="stats">
+      <div class="stat"><div class="num">15,000+</div><p>વિદ્યાર્થીઓ જોડાયા</p></div>
+      <div class="stat"><div class="num">25,000+</div><p>Test Attempts</p></div>
+      <div class="stat"><div class="num">98.5%</div><p>Student Satisfaction</p></div>
+      <div class="stat"><div class="num">4.8/5</div><p>Website Rating</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- SUBJECTS -->
+<section class="section" id="subjects" style="background:#fff">
+  <div class="container">
+    <div class="section-title">
+      <div class="mini">📖 SUBJECT PREPARATION</div>
+      <h2>વિષયવાર તૈયારી</h2>
+      <p>દરેક વિષય માટે અલગ MCQ Practice</p>
+    </div>
+
+    <div class="subject-grid">
+      <a href="subject-computer.html" class="subject"><div>💻</div><h4>કમ્પ્યુટર</h4><p>MCQ Practice</p></a>
+      <a href="subject-history.html" class="subject"><div>📕</div><h4>ભારતનો ઇતિહાસ</h4><p>MCQ Practice</p></a>
+      <a href="subject-geography.html" class="subject"><div>🌍</div><h4>ભારતનું ભૂગોળ</h4><p>MCQ Practice</p></a>
+      <a href="subject-constitution.html" class="subject"><div>📜</div><h4>બંધારણ</h4><p>MCQ Practice</p></a>
+      <a href="subject-science.html" class="subject"><div>⚛️</div><h4>વિજ્ઞાન</h4><p>MCQ Practice</p></a>
+      <a href="subject-maths.html" class="subject"><div>➕</div><h4>ગણિત</h4><p>MCQ Practice</p></a>
+    </div>
+  </div>
+</section>
+
+<!-- VIDEO / ABOUT / UPDATES -->
+<section class="section" id="about">
+  <div class="container">
+    <div class="content-grid">
+
+      <div class="info-card">
+        <h3>🎬 Preparation Video</h3>
+        <div class="video-box">
+          <div class="play">▶️</div>
+        </div>
+        <h4>CCE Exam માટે તૈયારી કેવી રીતે કરવી?</h4>
+        <p style="color:#64748b">અહીં તમારી YouTube/videoની link મૂકી શકો છો.</p>
+      </div>
+
+      <div class="info-card">
+        <h3>ℹ️ About JB Education</h3>
+        <p style="color:#64748b;line-height:1.7">
+          JB Education CCE અને વિવિધ સ્પર્ધાત્મક પરીક્ષાઓ માટે
+          Online Mock Test અને MCQ Practice Platform તરીકે ઉપયોગ કરી શકાય છે.
+        </p>
+        <ul class="info-list">
+          <li>✅ સરળ અને user-friendly platform</li>
+          <li>✅ વિષયવાર MCQ Practice</li>
+          <li>✅ Instant Mock Test Result</li>
+          <li>✅ પરીક્ષા માટે સતત નવી Practice</li>
+        </ul>
+      </div>
+
+      <div class="info-card" id="updates">
+        <h3>📢 Latest Updates</h3>
+        <div class="update"><b>Mock Test-2 હવે Available છે</b><span>New</span></div>
+        <div class="update"><b>Daily MCQ Section Update</b><span>New</span></div>
+        <div class="update"><b>વધુ Mock Test ટૂંક સમયમાં</b><span>New</span></div>
+        <div class="update"><b>Leaderboard System</b><span>Coming</span></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="section" style="padding-top:0">
+  <div class="container">
+    <div class="cta">
+      <h2>🚀 આજે જ તમારી તૈયારી શરૂ કરો!</h2>
+      <p>Mock Test આપો • Result મેળવો • તમારી તૈયારીનું Analysis કરો</p>
+      <a href="mock-test-1.html" class="btn btn-primary">START MOCK TEST ▶️</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer id="contact">
+  <div class="container">
+    <div class="footer-grid">
+
+      <div>
+        <h3>🎓 JB EDUCATION</h3>
+        <p>CCE Mock Test Platform</p>
+        <p style="line-height:1.6">CCE પરીક્ષા અને વિવિધ પરીક્ષાઓ માટે Online તૈયારીનું પ્લેટફોર્મ.</p>
+      </div>
+
+      <div>
+        <h4>Quick Links</h4>
+        <a href="#home">Home</a>
+        <a href="#tests">Mock Tests</a>
+        <a href="#subjects">Subjects</a>
+        <a href="results.html">Results</a><a href="leaderboard.html">Leaderboard</a>
+      </div>
+
+      <div>
+        <h4>Support</h4>
+        <a href="#about">About Us</a>
+        <a href="help-faq.html">Help & FAQ</a>
+        <a href="privacy-policy.html">Privacy Policy</a>
+        <a href="terms-conditions.html">Terms & Conditions</a>
+      </div>
+
+      <div>
+        <h4>Contact</h4>
+        <p>📞 +91 XXXXX XXXXX</p>
+        <p>📧 jbeducation@gmail.com</p>
+        <p>📍 Gujarat, India</p>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <span>© 2026 JB Education. All Rights Reserved.</span>
+      <span>Made with ❤️ for Students</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+function toggleMenu(){
+  document.getElementById("mainNav").classList.toggle("open");
+}
+
+document.querySelectorAll("#mainNav a").forEach(function(link){
+  link.addEventListener("click",function(){
+    document.getElementById("mainNav").classList.remove("open");
+  });
+});
+</script>
+
+</body>
+</html>

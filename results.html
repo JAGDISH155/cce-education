@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="gu">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Results - JB Education</title>
+<style>
+body{font-family:Arial,"Noto Sans Gujarati",sans-serif;background:#f5f7fb;margin:0;color:#172033}
+.wrap{max-width:850px;margin:35px auto;padding:20px}
+.card{background:#fff;padding:25px;border-radius:18px;box-shadow:0 6px 24px #0001;margin-bottom:15px}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.item{background:#f8fafc;padding:15px;border-radius:10px}
+.value{font-size:22px;font-weight:800}
+button,a{display:inline-block;padding:12px 18px;border-radius:9px;text-decoration:none;border:0;cursor:pointer}
+button{background:#2563eb;color:#fff}a{background:#e5e7eb;color:#111}
+@media(max-width:600px){.grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="card">
+<h1>📊 તમારો Result</h1>
+<div id="box">Result શોધી રહ્યા છીએ...</div>
+<br>
+<a href="index.html">← Home</a>
+</div>
+</div>
+<script>
+const raw=localStorage.getItem("jbLastResult");
+const box=document.getElementById("box");
+if(!raw){
+  box.innerHTML="<p>હજુ કોઈ result મળ્યો નથી. પહેલા Mock Test આપો.</p>";
+}else{
+  const r=JSON.parse(raw);
+  box.innerHTML=`
+  <h2>${r.testName||""}</h2>
+  <p><b>વિદ્યાર્થી:</b> ${r.studentName||""}</p>
+  <div class="grid">
+    <div class="item">Score<div class="value">${r.score}</div></div>
+    <div class="item">Percentage<div class="value">${r.percentage}%</div></div>
+    <div class="item">Correct<div class="value">${r.correct}</div></div>
+    <div class="item">Wrong<div class="value">${r.wrong}</div></div>
+    <div class="item">Unattempted<div class="value">${r.unattempted}</div></div>
+    <div class="item">Negative Marks<div class="value">${r.negativeMarks}</div></div>
+  </div>
+  <p style="color:#15803d;font-weight:bold">✅ Result Firebaseમાં save કરવાનો પ્રયાસ કરવામાં આવ્યો છે.</p>`;
+}
+</script>
+</body>
+</html>

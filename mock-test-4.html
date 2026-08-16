@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="gu">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Mock Test 4 - JB Education</title>
+<style>
+body{font-family:Arial,"Noto Sans Gujarati",sans-serif;background:#f5f7fb;margin:0;color:#172033}
+.wrap{max-width:900px;margin:30px auto;padding:20px}
+.top{background:#071b43;color:#fff;padding:20px;border-radius:16px}
+.q{background:#fff;padding:20px;margin:14px 0;border-radius:14px;box-shadow:0 5px 18px #0001}
+button{padding:13px 22px;background:#2563eb;color:#fff;border:0;border-radius:9px;font-weight:bold;cursor:pointer}
+#msg{color:#b91c1c;font-weight:bold}
+a{color:#2563eb}
+</style>
+<script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore-compat.js"></script>
+<script src="js/firebase-config.js"></script>
+<script src="js/mock-test.js"></script>
+</head>
+<body>
+<div class="wrap">
+  <div class="top">
+    <h1>📝 CCE Mock Test 4</h1>
+    <p>Firebaseમાંથી MCQ પ્રશ્નો load થશે.</p>
+  </div>
+  <div id="msg"></div>
+  <div id="questions"><p>Questions loading...</p></div>
+  <button onclick="submitTest()">✅ Test Submit કરો</button>
+  <p><a href="index.html">← Home</a></p>
+</div>
+<script>
+auth?.onAuthStateChanged(user => {
+  if (!user) {
+    document.getElementById("msg").textContent = "Mock Test આપવા Login જરૂરી છે.";
+    return;
+  }
+  loadMockTest("mock-test-4");
+});
+</script>
+</body>
+</html>
